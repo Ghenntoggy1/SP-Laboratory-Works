@@ -221,7 +221,7 @@ grid on;
 set(gca,'FontName', 'Arial Cyr','FontSize',16);
 xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
 ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
-title(sprintf('\\textbf{Original, Clean Signal - Seed %d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1), 'Interpreter', 'latex');
+title(sprintf('\\textbf{Original, Clean Signal - Seed=%d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1), 'Interpreter', 'latex');
 waitfor(gcf);
 
 % Step 2.2 - Generate a Noise using rand() and plot it
@@ -246,7 +246,7 @@ grid on;
 set(gca,'FontName', 'Arial Cyr','FontSize',16);
 xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
 ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
-title(sprintf('\\textbf{Generated Random Noise and Clean Signal - Seed %d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1), 'Interpreter', 'latex');
+title(sprintf('\\textbf{Generated Random Noise and Clean Signal - Seed=%d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1), 'Interpreter', 'latex');
 legend('Location', 'best', 'Interpreter', 'latex');
 waitfor(gcf);
 
@@ -259,7 +259,7 @@ grid on;
 set(gca,'FontName', 'Arial Cyr','FontSize',16);
 xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
 ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
-title(sprintf('\\textbf{Affected by Noise Signal - Seed %d, $\\mathbf{noise_s(n) = (2n\\cdot0.9^n)+d}$}', random_seed_1), 'Interpreter', 'latex');
+title(sprintf('\\textbf{Affected by Noise Signal - Seed=%d, $\\mathbf{noise_s(n) = (2n\\cdot0.9^n)+d}$}', random_seed_1), 'Interpreter', 'latex');
 waitfor(gcf);
 
 % Step 2.5 - Project a MAF Filter
@@ -268,16 +268,55 @@ b = ones(M, 1)/M;
 y = filter(b, 1, noise_s);
 
 figure(15);
-plot(n, s, 'r', 'DisplayName', 'Clean Signal $s(n) = 2n\cdot0.9^n$');
+plot(n, s, 'r', 'LineWidth', 1.5, 'DisplayName', 'Clean Signal $s(n) = 2n\cdot0.9^n$');
 hold on;
-plot(n, noise_s, 'b', 'DisplayName', 'Noisy Signal $s(n)');
+plot(n, noise_s, 'b', 'LineWidth', 1.5, 'DisplayName', 'Noisy Signal $s(n)$');
 hold on;
-plot(n, y, 'g', 'DisplayName', 'Filtered Signal $s(n)');
+plot(n, y, 'g', 'DisplayName', 'Filtered Signal $s(n)$');
 
 grid on;
 set(gca,'FontName', 'Arial Cyr','FontSize',16);
 xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
 ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
-title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed %d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1), 'Interpreter', 'latex');
+title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed=%d, M=%d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1, M), 'Interpreter', 'latex');
+legend('Location', 'best', 'Interpreter', 'latex');
+waitfor(gcf);
+
+% Step 2.6 - Repeat step 2.5 with different M values
+M = 5;
+b = ones(M, 1)/M;
+y = filter(b, 1, noise_s);
+
+figure(16);
+plot(n, s, 'r', 'LineWidth', 1.5, 'DisplayName', 'Clean Signal $s(n) = 2n\cdot0.9^n$');
+hold on;
+plot(n, noise_s, 'b', 'LineWidth', 1.5, 'DisplayName', 'Noisy Signal $s(n)$');
+hold on;
+plot(n, y, 'g', 'DisplayName', 'Filtered Signal $s(n)$');
+
+grid on;
+set(gca,'FontName', 'Arial Cyr','FontSize',16);
+xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
+ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
+title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed=%d, M=%d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1, M), 'Interpreter', 'latex');
+legend('Location', 'best', 'Interpreter', 'latex');
+waitfor(gcf);
+
+M = 10;
+b = ones(M, 1)/M;
+y = filter(b, 1, noise_s);
+
+figure(17);
+plot(n, s, 'r', 'LineWidth', 1.5, 'DisplayName', 'Clean Signal $s(n) = 2n\cdot0.9^n$');
+hold on;
+plot(n, noise_s, 'b', 'LineWidth', 1.5, 'DisplayName', 'Noisy Signal $s(n)$');
+hold on;
+plot(n, y, 'g', 'DisplayName', 'Filtered Signal $s(n)$');
+
+grid on;
+set(gca,'FontName', 'Arial Cyr','FontSize',16);
+xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
+ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
+title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed=%d, M=%d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1, M), 'Interpreter', 'latex');
 legend('Location', 'best', 'Interpreter', 'latex');
 waitfor(gcf);
