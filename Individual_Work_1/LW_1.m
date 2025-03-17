@@ -320,3 +320,72 @@ ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
 title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed=%d, M=%d, $\\mathbf{s(n) = 2n\\cdot0.9^n}$}', random_seed_1, M), 'Interpreter', 'latex');
 legend('Location', 'best', 'Interpreter', 'latex');
 waitfor(gcf);
+
+% Step 2.7 Perform Filtering on another signal and plot the results
+R = 1;
+n = 0:0.001:R;
+M = 20;
+s = 2*sawtooth(3*pi*n+pi/6);
+d = rand(1, length(n)) - 0.5;
+noise_s = s + d;
+b = ones(M, 1)/M;
+y = filter(b, 1, noise_s);
+
+figure(18);
+plot(n, noise_s, 'g', 'LineWidth', 1.5, 'DisplayName', 'Noisy Signal $s(n)$');
+hold on;
+plot(n, s, 'r', 'LineWidth', 1.5, 'DisplayName', 'Clean Signal $s(n) = 2 \cdot sawtooth \cdot (3 \pi n + \frac{\pi}{6})$');
+hold on;
+plot(n, y, 'b', 'LineWidth', 1.5, 'DisplayName', 'Filtered Signal $s(n)$');
+
+grid on;
+set(gca,'FontName', 'Arial Cyr','FontSize',16);
+xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
+ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
+title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed=%d, M=%d, $\\mathbf{s(n)=2 \\cdot sawtooth \\cdot (3 \\pi n + \\frac{\\pi}{6})}$}', random_seed_1, M), 'Interpreter', 'latex');
+legend('Location', 'best', 'Interpreter', 'latex');
+waitfor(gcf);
+
+% Step 2.8 Repeat Step 2.7 with different M values
+R = 1;
+n = 0:0.001:R;
+M = 50;
+s = 2*sawtooth(3*pi*n+pi/6);
+d = rand(1, length(n)) - 0.5;
+noise_s = s + d;
+b = ones(M, 1)/M;
+y = filter(b, 1, noise_s);
+
+figure(19);
+plot(n, noise_s, 'g', 'LineWidth', 1.5, 'DisplayName', 'Noisy Signal $s(n)$');
+hold on;
+plot(n, s, 'r', 'LineWidth', 1.5, 'DisplayName', 'Clean Signal $s(n) = 2 \cdot sawtooth \cdot (3 \pi n + \frac{\pi}{6})$');
+hold on;
+plot(n, y, 'b', 'LineWidth', 1.5, 'DisplayName', 'Filtered Signal $s(n)$');
+
+grid on;
+set(gca,'FontName', 'Arial Cyr','FontSize',16);
+xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
+ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
+title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed=%d, M=%d, $\\mathbf{s(n)=2 \\cdot sawtooth \\cdot (3 \\pi n + \\frac{\\pi}{6})}$}', random_seed_1, M), 'Interpreter', 'latex');
+legend('Location', 'best', 'Interpreter', 'latex');
+waitfor(gcf);
+
+M = 100;
+b = ones(M, 1)/M;
+y = filter(b, 1, noise_s);
+
+figure(20);
+plot(n, noise_s, 'g', 'LineWidth', 1.5, 'DisplayName', 'Noisy Signal $s(n)$');
+hold on;
+plot(n, s, 'r', 'LineWidth', 1.5, 'DisplayName', 'Clean Signal $s(n) = 2 \cdot sawtooth \cdot (3 \pi n + \frac{\pi}{6})$');
+hold on;
+plot(n, y, 'b', 'LineWidth', 1.5, 'DisplayName', 'Filtered Signal $s(n)$');
+
+grid on;
+set(gca,'FontName', 'Arial Cyr','FontSize',16);
+xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
+ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
+title(sprintf('\\textbf{Clean, Noisy and Filtered Signal - Seed=%d, M=%d, $\\mathbf{s(n)=2 \\cdot sawtooth \\cdot (3 \\pi n + \\frac{\\pi}{6})}$}', random_seed_1, M), 'Interpreter', 'latex');
+legend('Location', 'best', 'Interpreter', 'latex');
+waitfor(gcf);
