@@ -256,7 +256,7 @@ noise_s = s + d;
 figure(14);
 stem(n, noise_s);
 grid on; 
-set(gca,'FontName', 'Arial Cyr','FontSize',16);
+set(gca,'FontName', 'Arial Cyr', 'FontSize', 16);
 xlabel('\textbf{Time Index (n)}', 'Interpreter', 'latex');
 ylabel('\textbf{Amplitude}', 'Interpreter', 'latex');
 title(sprintf('\\textbf{Affected by Noise Signal - Seed=%d, $\\mathbf{noise_s(n) = (2n\\cdot0.9^n)+d}$}', random_seed_1), 'Interpreter', 'latex');
