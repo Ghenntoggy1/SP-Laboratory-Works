@@ -108,7 +108,6 @@ axis tight;
 waitfor(gcf);
 
 % 2.2 Histogram equalization
-% I2 = imadjust(cropped_region,[.2 .3 0; .6 .7 1],[]);
 I2(:,:,1) = histeq(cropped_region(:,:,1));
 I2(:,:,2) = histeq(cropped_region(:,:,2));
 I2(:,:,3) = histeq(cropped_region(:,:,3));
@@ -200,6 +199,26 @@ title('\textbf{Filtered Cropped Region 5x7}', ...
 set(gca,'FontName', 'Arial Cyr', 'FontSize', 16);
 waitfor(gcf);
 
+% 3.2.1 Filter 11x11
+IG = rgb2gray(cropped_region);
+
+f1=fspecial('average', [11, 11]);
+cf1= filter2(f1, IG);
+figure(26);
+subplot(1,2,1);
+imshow(IG);
+title('\textbf{Cropped Region}', ...
+    'Interpreter', ...
+    'latex');
+set(gca,'FontName', 'Arial Cyr', 'FontSize', 16);
+subplot(1,2,2);
+imshow(cf1/255);
+title('\textbf{Filtered Cropped Region 11x11}', ...
+    'Interpreter', ...
+    'latex');
+set(gca,'FontName', 'Arial Cyr', 'FontSize', 16);
+waitfor(gcf);
+
 % 3.3 Laplacian Filter
 IG = rgb2gray(cropped_region);
 
@@ -257,7 +276,7 @@ c_sp_f4=filter2(a4,c_sp);
 
 figure(21);
 subplot(1,3,1);
-imshow(IG);
+imshow(c_sp);
 title('\textbf{Cropped Region}', ...
     'Interpreter', ...
     'latex');
